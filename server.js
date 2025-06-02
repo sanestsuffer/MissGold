@@ -30,9 +30,9 @@ db.once('open', () => {
 });
 
 
-app.use('/api/tables', tableRoutes);
+app.use('/api/table', tableRoutes);
 app.use('/api/menu', menuRoutes);
-app.use('/api/bills', billRoutes);
+app.use('/api/bill', billRoutes);
 
 
 app.get('/', (req, res) => {
@@ -40,6 +40,12 @@ app.get('/', (req, res) => {
 });
 app.get('/menu', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/menu', 'menu.html'));
+});
+app.get('/bill', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/bill', 'bill.html'));
+});
+app.get('/table', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/table', 'table.html'));
 });
 
 
