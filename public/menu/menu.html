@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu Manager</title>
+    <link rel="stylesheet" href="menu.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Menu Management</h1>
+
+        <form id="menuForm">
+            <input type="hidden" id="menuId">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="number" id="price" placeholder="Price" required>
+            <input type="number" id="quantity" placeholder="Quantity" required>
+            <input type="text" id="image" placeholder="Image URL">
+            <input type="text" id="category" placeholder="Category">
+            <textarea id="description" placeholder="Description"></textarea>
+            <button type="submit">Save</button>
+        </form>
+
+        <h2>Menu Items</h2>
+        <div id="menuList"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
