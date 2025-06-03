@@ -11,14 +11,12 @@ const getAllMenuItems = async (req, res) => {
 
 const createMenuItem = async (req, res) => {
     try {
-        const { name, price, quantity, image, category, description } = req.body;
+        const { name, price, image, category } = req.body;
         const menuItem = new Menu({
             name,
             price,
-            quantity,
             image,
             category,
-            description
         });
         const savedMenuItem = await menuItem.save();
         res.status(201).json(savedMenuItem);
@@ -64,10 +62,31 @@ const deleteMenuItem = async (req, res) => {
     }
 };
 
+const getAllCategories = async (req, res) => {
+    try {
+        const categories = await Menu.distinct('category');
+        res.json(categories);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+const getMenuItemsByCategory = async (req, res) => {
+    try {
+        const categoryName = req.params.category;  // /api/menu/category/:category
+        const menuItems = await Menu.find({ category: categoryName });
+        res.json(menuItems);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 module.exports = {
     getAllMenuItems,
     createMenuItem,
     getMenuItemById,
     updateMenuItem,
-    deleteMenuItem
+    deleteMenuItem,
+    getAllCategories,
+    getMenuItemsByCategory
 };

@@ -13,10 +13,9 @@
             <input type="hidden" id="menuId">
             <input type="text" id="name" placeholder="Name" required>
             <input type="number" id="price" placeholder="Price" required>
-            <input type="number" id="quantity" placeholder="Quantity" required>
-            <input type="text" id="image" placeholder="Image URL">
+            <input type="file" id="image" accept="image/*" />
+            <img id="previewImage" src="" alt="Preview" style="max-width: 150px;"/>
             <input type="text" id="category" placeholder="Category">
-            <textarea id="description" placeholder="Description"></textarea>
             <button type="submit">Save</button>
         </form>
 

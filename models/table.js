@@ -6,10 +6,6 @@ const tableSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    isAvailable: {
-        type: Boolean,
-        default: true
-    },
     currentOrder: [{
         menuItem: {
         type: mongoose.Schema.Types.ObjectId,

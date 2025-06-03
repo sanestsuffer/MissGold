@@ -9,13 +9,13 @@ const menuSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    quantity: {
-        type: Number,
-        default: 0
-    },
     image: {
         type: String,
-        default: '/images/default-food.jpg'
+        default: '../images/default.png'
+    },
+    category: {
+        type: String,
+        default: "mì cay"
     },
     createdAt: {
         type: Date,

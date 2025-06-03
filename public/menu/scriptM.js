@@ -10,10 +10,8 @@ menuForm.addEventListener('submit', async (e) => {
     const data = {
         name: document.getElementById('name').value,
         price: document.getElementById('price').value,
-        quantity: document.getElementById('quantity').value,
         image: document.getElementById('image').value,
         category: document.getElementById('category').value,
-        description: document.getElementById('description').value
     };
 
     if (id) {
@@ -35,6 +33,10 @@ menuForm.addEventListener('submit', async (e) => {
     loadMenu();
 });
 
+function formatVND(value) {
+    return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(value);
+}
+
 async function loadMenu() {
     const res = await fetch(apiUrl);
     const items = await res.json();
@@ -46,10 +48,9 @@ async function loadMenu() {
 
         div.innerHTML = `
             <strong>${item.name}</strong><br>
-            Price: ${item.price} - Qty: ${item.quantity}<br>
+            Price: ${formatVND(item.price)}<br>
             Category: ${item.category}<br>
             <img src="${item.image}" alt="${item.name}"><br>
-            <p>${item.description}</p>
             <div class="menu-actions">
                 <button onclick="editItem('${item._id}')">Edit</button>
                 <button onclick="deleteItem('${item._id}')">Delete</button>
@@ -66,10 +67,8 @@ async function editItem(id) {
     document.getElementById('menuId').value = item._id;
     document.getElementById('name').value = item.name;
     document.getElementById('price').value = item.price;
-    document.getElementById('quantity').value = item.quantity;
     document.getElementById('image').value = item.image;
     document.getElementById('category').value = item.category;
-    document.getElementById('description').value = item.description;
 }
 
 async function deleteItem(id) {
